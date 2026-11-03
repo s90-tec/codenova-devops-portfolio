@@ -51,4 +51,14 @@ Recorded workflow evidence:
 Save genuine screenshots of the branch/PR, review, and passing Actions checks for submission. The current PR has no description; add a meaningful summary, test results, and deployment impact in its GitHub description before requesting review.
 
 ## Peer review simulation
-For a solo project, use a second GitHub account or ask a teammate to review. Do not claim an independent review if one did not happen.
+
+### Maintainer self-review record
+
+This is a documented self-review simulation, not an independent peer approval.
+
+- Scope: endpoint implementation, endpoint tests, both GitHub Actions workflows, Docker build context, and task documentation on PR #2.
+- Review check: confirmed one `/about` route remains and added endpoint and unknown-route assertions.
+- Review check: ran pytest (5 passed), Ruff, YAML parsing, Docker image build, container `/health`, and non-root UID verification.
+- Finding resolved: duplicate `about` declarations caused Ruff `F811`; the extra declaration was removed before the successful checks.
+- Finding resolved: Python cache files were initially included in the Docker context; nested cache exclusions were added and the image rebuilt/rechecked.
+- Outstanding: request an actual teammate/second-account review of [PR #2](https://github.com/s90-tec/codenova-devops-portfolio/pull/2). GitHub currently shows no submitted reviews.
