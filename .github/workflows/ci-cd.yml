@@ -3,6 +3,8 @@ name: CI-CD Pipeline
 on:
   push:
     branches: ["main"]
+  pull_request:
+    branches: ["main"]
   workflow_dispatch:
 
 permissions:
@@ -66,8 +68,9 @@ jobs:
           RENDER_DEPLOY_HOOK_URL: ${{ secrets.RENDER_DEPLOY_HOOK_URL }}
         run: |
           if [ -z "$RENDER_DEPLOY_HOOK_URL" ]; then
-            echo "Deployment skipped: RENDER_DEPLOY_HOOK_URL is not configured."
-            exit 0
+            echo "::error::Required secret RENDER_DEPLOY_HOOK_URL is not configured."
+            exit 1
           fi
           curl --fail --silent --show-error \
+            --retry 3 --retry-all-errors --max-time 30 \
             --request POST "$RENDER_DEPLOY_HOOK_URL"

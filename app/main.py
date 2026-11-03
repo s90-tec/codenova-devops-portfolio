@@ -24,9 +24,11 @@ def health():
 @app.get("/greet/{name}")
 def greet(name: str):
     return {"message": f"Hello, {name}! Welcome to CodeNova DevOps."}
+
+
 @app.get("/about")
 def about():
     return {
         "project": "CodeNova DevOps Portfolio",
-        "purpose": "DevOps Internship Demonstration"
+        "purpose": "DevOps Internship Demonstration",
     }
