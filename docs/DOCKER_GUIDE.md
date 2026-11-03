@@ -52,3 +52,5 @@ docker run --rm -p 8000:8000 \
 ```
 
 Record a terminal screenshot showing the successful build, image size, `id` output, and `/health` response. The actual image size depends on the platform and dependency versions; record the measured output rather than quoting an estimate.
+
+Local verification on macOS (Python 3.12 Docker image): build succeeded; observed image size was 278 MB; the container returned `{"status":"healthy"}` from `/health`; its runtime identity was `uid=10001(appuser)`; and the runtime image contained only the application files, with no `.env`, private-key, or Python cache files. Re-run these checks when taking submission screenshots because image size and host output can vary.

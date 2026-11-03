@@ -48,9 +48,13 @@ fi
 
 The output should show one failed assertion, while the script verifies pytest returned exit code 1 and removes only its own scratch file and directory. Then run `python -m pytest -v` and `python -m ruff check .` to demonstrate the clean project suite. Do not commit the intentionally failing test. A GitHub Actions failure/success screenshot requires running the corresponding workflow on GitHub.
 
+For CI evidence, [Automated Tests run #5](https://github.com/s90-tec/codenova-devops-portfolio/actions/runs/41644003291) is a real failed run, but it failed in Ruff on the duplicate `about` function, not in pytest. The [later Automated Tests run](https://github.com/s90-tec/codenova-devops-portfolio/actions/runs/41649423141) and [CI-CD run](https://github.com/s90-tec/codenova-devops-portfolio/actions/runs/41649422929) passed lint, tests, and image build for the current commit. The deploy job was skipped on the PR, as designed.
+
 ## Manual configuration that cannot be committed
 
 - Add `RENDER_DEPLOY_HOOK_URL` under repository Settings → Secrets and variables → Actions.
 - Protect `main` under Settings → Branches / Rulesets: require pull requests and require the `Automated Tests` and `CI-CD Pipeline` lint, test, and build checks after confirming their exact names on a pull request run. The deploy job is limited to pushes to `main`.
 - A repository administrator or a second GitHub account must perform an independent review; do not describe self-review as peer review.
 - Set up the Render service and confirm its assigned public URL and `/health` response before claiming a live deployment.
+
+GitHub currently reports `main` is unprotected; branch rules and required checks must be enabled in repository settings by an administrator. The current pull request has no independent review yet.
