@@ -23,5 +23,23 @@ Use Conventional Commits:
 6. Ensure the Actions checks pass.
 7. Merge the pull request and delete the feature branch.
 
+Example commands:
+
+```bash
+git switch main
+git pull --ff-only
+git switch -c feature/describe-change
+# edit, test, and review the diff
+git add app tests
+git commit -m "feat: describe change"
+git push -u origin feature/describe-change
+```
+
+Open a pull request from the pushed branch into `main` using GitHub. Include the purpose, implementation summary, test results, and any deployment impact in the description. Only merge after required checks and a real review are complete.
+
+## Repository setup and evidence
+
+The repository includes `.gitignore`, `LICENSE`, CI workflows, and task guides. Confirm the repository is public in GitHub Settings and that `main` is the default branch. Configure branch protection and required status checks in GitHub Settings; those settings are server-side and are not represented by these files. Save genuine screenshots of the branch/PR, review, and passing Actions checks for submission.
+
 ## Peer review simulation
 For a solo project, use a second GitHub account or ask a teammate to review. Do not claim an independent review if one did not happen.
