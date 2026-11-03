@@ -11,7 +11,7 @@ A Python FastAPI project demonstrating the four DevOps tasks assigned in CodeNov
 - Linting with Ruff
 - GitHub Actions CI on pushes and pull requests
 - Multi-stage Docker image running as a non-root user
-- Sequential CI/CD workflow with optional Render deployment hook
+- Sequential CI/CD workflow with a gated Render deployment hook
 
 ## Tech stack
 Python 3.12 (CI and container), FastAPI, pytest, Ruff, Git, GitHub Actions, Docker.
@@ -29,6 +29,10 @@ GitHub push / pull request
 ```
 
 The CI/CD deploy job requires the `RENDER_DEPLOY_HOOK_URL` repository secret. A missing secret fails deployment rather than reporting a successful deploy. No live URL is published until a deployment has been configured and its health endpoint verified.
+
+## Deployment status
+
+The Render Blueprint is provided in `render.yaml`, but no live Render URL has been verified yet. Create the Blueprint, configure the GitHub Actions secret, and confirm `/health` before sharing a live-demo link.
 
 ## Local setup
 
@@ -76,7 +80,7 @@ See [CI/CD guide](docs/CICD_GUIDE.md). Configure a Render service and add the Gi
 - Task 4: CI/CD pipeline
 
 ## Screenshots and demo
-Capture genuine screenshots after running the corresponding steps: passing and deliberately failing tests, successful GitHub Actions runs, Docker build/image size/non-root inspection, and the deployed `/health` endpoint. Do not represent screenshots or a live URL as available until the checks have actually succeeded. See the task guides for the exact commands.
+Screenshots are not currently included in this repository. Before submission, add genuine screenshots of passing and deliberately failing tests, successful GitHub Actions runs, Docker build/image size/non-root inspection, and (after deployment) the public `/health` endpoint. Do not represent a screenshot or live URL as available until the check has actually succeeded. See the task guides for the exact commands.
 
 ## Security
 Do not commit API keys, passwords, deploy hooks, or other secrets.

@@ -39,16 +39,17 @@ Open a pull request from the pushed branch into `main` using GitHub. Include the
 
 ## Repository setup and evidence
 
-The [public repository](https://github.com/s90-tec/codenova-devops-portfolio) includes `.gitignore`, `LICENSE`, CI workflows, and task guides. `main` is the default branch. The repository has two feature branches: `feature/add-about-endpoint` and `feature/greeting-encoded-name-test` (which adds coverage for URL-encoded greeting names). The [first pull request](https://github.com/s90-tec/codenova-devops-portfolio/pull/1) is merged and [PR #2](https://github.com/s90-tec/codenova-devops-portfolio/pull/2) is open for the about endpoint and DevOps workflow updates. [Create a pull request for the second branch](https://github.com/s90-tec/codenova-devops-portfolio/compare/main...feature/greeting-encoded-name-test?expand=1) to submit its independent test change.
+The [public repository](https://github.com/s90-tec/codenova-devops-portfolio) includes `.gitignore`, `LICENSE`, CI workflows, and task guides. `main` is the default branch. As of the current audit, PRs #1 through #6 are merged: #1/#2 add the about endpoint and CI/Docker/Render configuration, #3 adds encoded-name test coverage, and #4-#6 document the deployment strategy and merge-conflict exercise.
+
+The merged PRs demonstrate feature branching, Conventional Commits, multiple commits, and PR-based merges. The feature branches still exist on the remote; delete them from GitHub after confirming they are no longer needed if branch cleanup is part of the submission rubric. Independent peer approval is not evidenced by the self-review comments.
 
 Recorded workflow evidence:
 
-- [PR #2 checks](https://github.com/s90-tec/codenova-devops-portfolio/actions/runs/41649422929): lint, tests, and Docker image build passed for commit `8d4db054b5da515c32f3dc9e75ba64519c0bd327`; deploy is skipped for a pull request.
-- [Automated Tests run](https://github.com/s90-tec/codenova-devops-portfolio/actions/runs/41649423141): passed for that commit.
-- The [earlier Actions failure](https://github.com/s90-tec/codenova-devops-portfolio/actions/runs/41644003291) caught the duplicate `about` declaration during Ruff linting; the duplicate was removed and subsequent checks passed.
-- The PR currently has no independent reviews, and GitHub reports branch protection is disabled. A repository administrator must enable branch protection and a teammate/second account must review before those requirements can be marked complete.
+- [Automated Tests on latest main](https://github.com/s90-tec/codenova-devops-portfolio/actions/runs/41674968349): passed.
+- [CI-CD on latest main](https://github.com/s90-tec/codenova-devops-portfolio/actions/runs/41674968264): lint, tests, and Docker build passed; deploy failed because `RENDER_DEPLOY_HOOK_URL` is not configured. The log did not print a secret value.
+- [PR #6 checks](https://github.com/s90-tec/codenova-devops-portfolio/actions/runs/41674933652): lint, tests, and Docker build passed; deploy was correctly skipped for a pull request.
 
-Save genuine screenshots of the branch/PR, review, and passing Actions checks for submission. The current PR has no description; add a meaningful summary, test results, and deployment impact in its GitHub description before requesting review.
+Save genuine screenshots of the merged PRs and passing Actions checks for submission. Screenshots are not currently checked into the repository.
 
 ## Peer review simulation
 
@@ -61,4 +62,4 @@ This is a documented self-review simulation, not an independent peer approval.
 - Review check: ran pytest (5 passed), Ruff, YAML parsing, Docker image build, container `/health`, and non-root UID verification.
 - Finding resolved: duplicate `about` declarations caused Ruff `F811`; the extra declaration was removed before the successful checks.
 - Finding resolved: Python cache files were initially included in the Docker context; nested cache exclusions were added and the image rebuilt/rechecked.
-- Outstanding: request an actual teammate/second-account review of [PR #2](https://github.com/s90-tec/codenova-devops-portfolio/pull/2). GitHub currently shows no submitted reviews.
+- Outstanding: obtain independent reviewer evidence on a future PR; the merged PRs do not document an independent approval.

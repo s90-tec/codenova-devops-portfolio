@@ -1,5 +1,6 @@
 venv/
 .venv/
+.claude/
 __pycache__/
 *.py[cod]
 .pytest_cache/
@@ -9,6 +10,9 @@ htmlcov/
 .env
 .env.*
 !.env.example
+secrets/
+*.pem
+*.key
 .DS_Store
 .idea/
 .vscode/

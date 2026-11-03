@@ -43,3 +43,7 @@ Perform this exercise in a disposable local clone or a temporary practice reposi
    ```
 
 The practice repository is disposable; retain it only if you need it for a live demonstration. Capture genuine screenshots of Git's conflict output and the resolved commit. Do not add a fabricated conflict to the application source or claim this demonstration has been run unless you performed it.
+
+## Conflict exercise performed
+
+A real conflict was reproduced in `docs/merge-demo.txt`: two feature branches changed the same line differently, Git reported a content conflict, and the change was resolved and committed on `feature/conflict-b`. The conflict-resolution commit is [7ee41de](https://github.com/s90-tec/codenova-devops-portfolio/commit/7ee41de92860333e7933c12e72e30a32c36796a1), merged through [PR #6](https://github.com/s90-tec/codenova-devops-portfolio/pull/6). The final tracked project tree contains no conflict markers. Capture a genuine terminal screenshot if required for submission.

@@ -20,4 +20,5 @@ secrets
 .DS_Store
 tests
 docs
+app/docs/
 *.md

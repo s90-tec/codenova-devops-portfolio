@@ -48,7 +48,7 @@ fi
 
 The output should show one failed assertion, while the script verifies pytest returned exit code 1 and removes only its own scratch file and directory. Then run `python -m pytest -v` and `python -m ruff check .` to demonstrate the clean project suite. Do not commit the intentionally failing test. A GitHub Actions failure/success screenshot requires running the corresponding workflow on GitHub.
 
-For CI evidence, [Automated Tests run #5](https://github.com/s90-tec/codenova-devops-portfolio/actions/runs/41644003291) is a real failed run, but it failed in Ruff on the duplicate `about` function, not in pytest. The later [Automated Tests run](https://github.com/s90-tec/codenova-devops-portfolio/actions/runs/41651407483) and [CI-CD run](https://github.com/s90-tec/codenova-devops-portfolio/actions/runs/41651407399) passed lint, tests, and image build for commit `4e3417630d04db3a2f7a7677906104cfbbc4808c`. The deploy job was skipped on the PR, as designed.
+For CI evidence, [Automated Tests run #5](https://github.com/s90-tec/codenova-devops-portfolio/actions/runs/41644003291) is a real failed run, but it failed in Ruff on the duplicate `about` function, not in pytest. The duplicate was removed and later test/lint runs passed. The [latest main Automated Tests run](https://github.com/s90-tec/codenova-devops-portfolio/actions/runs/41674968349) passed. In the [latest main CI-CD run](https://github.com/s90-tec/codenova-devops-portfolio/actions/runs/41674968264), lint, tests, and Docker build passed; deploy failed because `RENDER_DEPLOY_HOOK_URL` was not configured. The failure log did not print a secret value. A prior successful [PR #6 CI-CD run](https://github.com/s90-tec/codenova-devops-portfolio/actions/runs/41674933652) skipped deployment as expected on a pull request.
 
 ## Manual configuration that cannot be committed
 
@@ -57,4 +57,4 @@ For CI evidence, [Automated Tests run #5](https://github.com/s90-tec/codenova-de
 - A repository administrator or a second GitHub account must perform an independent review; do not describe self-review as peer review.
 - Set up the Render service and confirm its assigned public URL and `/health` response before claiming a live deployment.
 
-GitHub currently reports `main` is unprotected; branch rules and required checks must be enabled in repository settings by an administrator. The current pull request has no independent review yet.
+Branch protection is an account-side setting. An earlier check indicated `main` may be unprotected, but its current status could not be verified: the unauthenticated GitHub API request returned HTTP 401. Confirm the ruleset in GitHub Settings and require pull requests, successful Lint/Test/Build checks, and no force pushes. The merged PR evidence does not show independent peer approval.
