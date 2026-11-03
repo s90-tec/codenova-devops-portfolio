@@ -30,3 +30,9 @@ def about():
         "project": "CodeNova DevOps Portfolio",
         "purpose": "DevOps Internship Demonstration"
     }
+@app.get("/about")
+def about():
+    return {
+        "project": "CodeNova DevOps Portfolio",
+        "purpose": "DevOps Internship Demonstration"
+    }
