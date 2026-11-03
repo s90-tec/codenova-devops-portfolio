@@ -41,3 +41,11 @@ def test_about_endpoint():
 def test_unknown_endpoint_returns_not_found():
     response = client.get("/does-not-exist")
     assert response.status_code == 404
+
+
+def test_greet_endpoint_accepts_url_encoded_space():
+    response = client.get("/greet/Chris%20Lee")
+    assert response.status_code == 200
+    assert response.json() == {
+        "message": "Hello, Chris Lee! Welcome to CodeNova DevOps."
+    }
