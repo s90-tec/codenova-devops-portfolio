@@ -9,13 +9,13 @@ The `ci-cd.yml` workflow runs sequentially:
 
 ## Configure deployment secret
 
-1. Create and configure a web service on Render using this GitHub repository and select Docker as the runtime.
+1. In Render, create a Blueprint from this GitHub repository and select `main`. The root `render.yaml` configures the Docker web service, free plan, and `/health` check. Confirm the plan is currently available to your Render account before creation.
 2. Obtain the service's deploy hook URL from its Render settings.
 3. In GitHub, open Settings → Secrets and variables → Actions → New repository secret.
 4. Name it `RENDER_DEPLOY_HOOK_URL` and paste the URL as its value.
 5. Never put the URL in source code or commit it.
 
-The deployment step runs only after lint, tests, and the Docker image build pass. It fails clearly if the secret is absent or the deploy hook request fails. Configure the Render service and repository secret before relying on deployment. This workflow builds but does not publish an image to a registry; Render builds the repository itself.
+The deployment step runs only after lint, tests, and the Docker image build pass. Render's `autoDeployTrigger: off` prevents a separate automatic deployment from bypassing these checks; GitHub Actions triggers the Render deploy hook after the pipeline succeeds. The step fails clearly if the secret is absent or the deploy hook request fails. Configure the Render service and repository secret before relying on deployment. This workflow builds but does not publish an image to a registry; Render builds the repository itself.
 
 ## Verify a deployment
 
