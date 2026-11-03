@@ -23,3 +23,11 @@ def test_greet_endpoint():
     assert response.json() == {
         "message": "Hello, Shubham! Welcome to CodeNova DevOps."
     }
+
+
+def test_greet_endpoint_accepts_url_encoded_space():
+    response = client.get("/greet/Chris%20Lee")
+    assert response.status_code == 200
+    assert response.json() == {
+        "message": "Hello, Chris Lee! Welcome to CodeNova DevOps."
+    }
