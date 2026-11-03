@@ -48,7 +48,7 @@ fi
 
 The output should show one failed assertion, while the script verifies pytest returned exit code 1 and removes only its own scratch file and directory. Then run `python -m pytest -v` and `python -m ruff check .` to demonstrate the clean project suite. Do not commit the intentionally failing test. A GitHub Actions failure/success screenshot requires running the corresponding workflow on GitHub.
 
-For CI evidence, [Automated Tests run #5](https://github.com/s90-tec/codenova-devops-portfolio/actions/runs/41644003291) is a real failed run, but it failed in Ruff on the duplicate `about` function, not in pytest. The [later Automated Tests run](https://github.com/s90-tec/codenova-devops-portfolio/actions/runs/41649423141) and [CI-CD run](https://github.com/s90-tec/codenova-devops-portfolio/actions/runs/41649422929) passed lint, tests, and image build for the current commit. The deploy job was skipped on the PR, as designed.
+For CI evidence, [Automated Tests run #5](https://github.com/s90-tec/codenova-devops-portfolio/actions/runs/41644003291) is a real failed run, but it failed in Ruff on the duplicate `about` function, not in pytest. The later [Automated Tests run](https://github.com/s90-tec/codenova-devops-portfolio/actions/runs/41651407483) and [CI-CD run](https://github.com/s90-tec/codenova-devops-portfolio/actions/runs/41651407399) passed lint, tests, and image build for commit `4e3417630d04db3a2f7a7677906104cfbbc4808c`. The deploy job was skipped on the PR, as designed.
 
 ## Manual configuration that cannot be committed
 
