@@ -1,1 +1,1 @@
-Deployment strategy: GitHub Actions workflow
+Deployment strategy: Render Blueprint with gated GitHub Actions deploy
