@@ -39,7 +39,7 @@ Open a pull request from the pushed branch into `main` using GitHub. Include the
 
 ## Repository setup and evidence
 
-The [public repository](https://github.com/s90-tec/codenova-devops-portfolio) includes `.gitignore`, `LICENSE`, CI workflows, and task guides. `main` is the default branch. The repository has `main` and `feature/add-about-endpoint` branches; the [first pull request](https://github.com/s90-tec/codenova-devops-portfolio/pull/1) is merged and [PR #2](https://github.com/s90-tec/codenova-devops-portfolio/pull/2) is open for the current branch.
+The [public repository](https://github.com/s90-tec/codenova-devops-portfolio) includes `.gitignore`, `LICENSE`, CI workflows, and task guides. `main` is the default branch. The repository has two feature branches: `feature/add-about-endpoint` and `feature/greeting-encoded-name-test` (which adds coverage for URL-encoded greeting names). The [first pull request](https://github.com/s90-tec/codenova-devops-portfolio/pull/1) is merged and [PR #2](https://github.com/s90-tec/codenova-devops-portfolio/pull/2) is open for the about endpoint and DevOps workflow updates. [Create a pull request for the second branch](https://github.com/s90-tec/codenova-devops-portfolio/compare/main...feature/greeting-encoded-name-test?expand=1) to submit its independent test change.
 
 Recorded workflow evidence:
 
